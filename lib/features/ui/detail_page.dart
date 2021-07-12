@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:toast/toast.dart';
 
 // ignore: must_be_immutable
-class DetailPage extends StatefulWidget {
+class DetailPage extends StatelessWidget {
 
   String name;
   int size;
@@ -14,17 +14,6 @@ class DetailPage extends StatefulWidget {
   String image;
 
   DetailPage(this.name, this.size, this.detail, this.price, this.image);
-
-  @override
-  _DetailPageState createState() => _DetailPageState();
-}
-
-class _DetailPageState extends State<DetailPage> {
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   final currencyFormatter = NumberFormat.currency(locale: 'id', symbol: 'Rp ',decimalDigits: 0);
 
@@ -73,7 +62,7 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         SizedBox(height: 5.0),
                         Text(
-                          widget.name,
+                          name,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30.0,
@@ -90,7 +79,7 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         SizedBox(height: 5.0),
                         Text(
-                          '${currencyFormatter.format(widget.price)}',
+                          '${currencyFormatter.format(price)}',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
@@ -107,7 +96,7 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         SizedBox(height: 5.0),
                         Text(
-                          '${widget.size}',
+                          '${size.toString()}',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
@@ -122,11 +111,11 @@ class _DetailPageState extends State<DetailPage> {
                     right: 20.0,
                     bottom: 30.0,
                     child: Hero(
-                      tag: widget.image,
+                      tag: image,
                       child: Image(
                         height: 280.0,
                         width: 280.0,
-                        image: AssetImage(widget.image),
+                        image: AssetImage(image),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -161,7 +150,7 @@ class _DetailPageState extends State<DetailPage> {
                           ),
                           SizedBox(height: 10.0),
                           Text(
-                            widget.detail,
+                            detail,
                             style: TextStyle(
                               color: Colors.black87,
                               fontSize: 16.0,
@@ -171,11 +160,11 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 30.0,
-                        vertical: 20.0,
-                      ),
-                      child: OrderButton()
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 30.0,
+                          vertical: 20.0,
+                        ),
+                        child: OrderButton()
                     ),
                   ],
                 ),
@@ -187,6 +176,7 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 }
+
 
 class OrderButton extends StatefulWidget{
   @override
