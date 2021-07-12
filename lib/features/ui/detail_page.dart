@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -174,27 +175,52 @@ class _DetailPageState extends State<DetailPage> {
                         horizontal: 30.0,
                         vertical: 20.0,
                       ),
-                      child: GestureDetector(
-                        onTap: (){
-                          Toast.show("Anda telah memesan ${widget.name}", context, duration: Toast.LENGTH_LONG, gravity:  Toast.TOP);
-                        },
-                        child: Container(
-                          height: 50,
-                          width: double.infinity,
-                          padding: EdgeInsets.symmetric(horizontal: 100,vertical: 15),
-                          decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.all(Radius.circular(50))
-                          ),
-                          child: Center(child: Text("Pesan", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
-                        ),
-                      ),
+                      child: OrderButton()
                     ),
                   ],
                 ),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class OrderButton extends StatefulWidget{
+  @override
+  _OrderButtonState createState() => _OrderButtonState();
+}
+
+class _OrderButtonState extends State<OrderButton> {
+
+  bool isOrder = false;
+
+  @override
+  // ignore: missing_return
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: 30.0,
+        vertical: 20.0,
+      ),
+      child: GestureDetector(
+        onTap: (){
+          setState(() {
+            isOrder = !isOrder;
+            Toast.show(isOrder? "Pesanan diterima":"Pesanan dibatalkan", context, duration: Toast.LENGTH_LONG, gravity:  Toast.TOP);
+          });
+        },
+        child: Container(
+          height: 50,
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(horizontal: 100,vertical: 15),
+          decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.all(Radius.circular(50))
+          ),
+          child: Center(child: Text(isOrder? "Batal":"Pesan", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
         ),
       ),
     );
