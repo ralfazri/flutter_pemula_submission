@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
-// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
 
   int _page = 0;

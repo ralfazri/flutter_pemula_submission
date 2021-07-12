@@ -1,17 +1,15 @@
-
+import 'package:fazrisubmission/features/ui/order_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:toast/toast.dart';
 
-// ignore: must_be_immutable
 class DetailPage extends StatelessWidget {
 
-  String name;
-  int size;
-  String detail;
-  int price;
-  String image;
+  final String name;
+  final int size;
+  final String detail;
+  final int price;
+  final String image;
 
   DetailPage(this.name, this.size, this.detail, this.price, this.image);
 
@@ -171,46 +169,6 @@ class DetailPage extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-
-class OrderButton extends StatefulWidget{
-  @override
-  _OrderButtonState createState() => _OrderButtonState();
-}
-
-class _OrderButtonState extends State<OrderButton> {
-
-  bool isOrder = false;
-
-  @override
-  // ignore: missing_return
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 30.0,
-        vertical: 20.0,
-      ),
-      child: GestureDetector(
-        onTap: (){
-          setState(() {
-            isOrder = !isOrder;
-            Toast.show(isOrder? "Pesanan diterima":"Pesanan dibatalkan", context, duration: Toast.LENGTH_LONG, gravity:  Toast.TOP);
-          });
-        },
-        child: Container(
-          height: 50,
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 100,vertical: 15),
-          decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.all(Radius.circular(50))
-          ),
-          child: Center(child: Text(isOrder? "Batal":"Pesan", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
         ),
       ),
     );
