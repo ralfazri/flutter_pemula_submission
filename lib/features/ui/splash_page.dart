@@ -28,7 +28,7 @@ class SplashPage extends StatelessWidget {
     var duration = const Duration(seconds: 2);
     return new Timer(duration, (){
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-        return HomePage(0);
+        return HomePage();
       }));
     });
   }

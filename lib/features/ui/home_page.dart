@@ -4,29 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
-class HomePage extends StatefulWidget {
+// ignore: must_be_immutable
+class HomePage extends StatelessWidget {
 
-  int pageNum;
-  HomePage(this.pageNum);
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
-
+  int _page = 0;
+  PageController _pageController = PageController(initialPage: 0, viewportFraction: 0.8);
 
   final currencyFormatter = NumberFormat.currency(locale: 'id', symbol: 'Rp ',decimalDigits: 0);
-
-  int _page;
-  PageController _pageController;
-
-  @override
-  void initState() {
-    super.initState();
-    _page = widget.pageNum;
-    _pageController = PageController(initialPage: widget.pageNum, viewportFraction: 0.8);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,13 +52,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               child: PageView.builder(
                 controller: _pageController,
                 onPageChanged: (int index) {
-                  setState(() {
-                    _page = index;
-                  });
+                  _page = index;
                 },
                 itemCount: dataSneakers.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return _sneakers(index);
+                  return _sneakers(index, context);
                 },
               ),
             ),
@@ -84,7 +66,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     );
   }
 
-  _sneakers(int index) {
+  _sneakers(int index, BuildContext context) {
     return AnimatedBuilder(
       animation: _pageController,
       builder: (BuildContext context, Widget widget) {
@@ -107,7 +89,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             context,
             MaterialPageRoute(
               builder: (_) => DetailPage(
-                dataSneakers[index].name,
+                  dataSneakers[index].name,
                   dataSneakers[index].size,
                   dataSneakers[index].detail,
                   dataSneakers[index].price,

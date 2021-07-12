@@ -24,7 +24,7 @@ final List<Sneakers> dataSneakers = [
       size: 42,
       detail: "Sepatu ini cocok untuk dibawa berlari jauh dan cepat, karena sepatu ini dibuat dengan bahan yang lembut dan nyaman",
       price: 500000,
-      image: "assets/images/sneakers_two.png"
+      image: "assets/images/sneakers_two.webp"
   ),
 
   Sneakers(
@@ -32,6 +32,6 @@ final List<Sneakers> dataSneakers = [
       size: 40,
       detail: "Sepatu ini dibuat dengan tampilan yang sangat elegan dan berbeda dari yang lain, bahan yang anti slip membuat pemakain menjadi aman",
       price: 800000,
-      image: "assets/images/sneakers_three.png"
+      image: "assets/images/sneakers_three.webp"
   ),
 ];
